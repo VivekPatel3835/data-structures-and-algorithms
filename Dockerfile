@@ -1,6 +1,6 @@
 FROM python:3
 
-LABEL maintainer="patelvivek3835@gmail.com"
+LABEL maintainer="Vivek Patel"
 
 # Set the working directory.
 WORKDIR /usr/src/
