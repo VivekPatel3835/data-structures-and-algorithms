@@ -19,7 +19,8 @@ class QuickUnion:
         self.components = components
         self.component_connections = self._initialize_indexed_array()
 
-    _TIME_COMPLEXITY = "O(n)"
+    # M = number of union operations
+    _TIME_COMPLEXITY = "M * N"
 
     # O(n)
     def _initialize_indexed_array(self) -> List:
@@ -58,4 +59,4 @@ if __name__ == "__main__":
     for command in commands:
         qf.union(p=command[0], q=command[1])
     end = datetime.now()
-    print(f'TIME ELAPSED: {end - start}')
+    print(f'PROGRAM END. TIME ELAPSED: {end - start}')

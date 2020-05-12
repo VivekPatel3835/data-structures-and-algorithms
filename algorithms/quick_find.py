@@ -17,7 +17,8 @@ class QuickFind:
     and only if id[p] is equal to id[q]. In other words, all sites in a component must have
     the same value in id[]. """
 
-    _TIME_COMPLEXITY = "O(n)"
+    # M = number of union operations
+    _TIME_COMPLEXITY = "M * N"
 
     def __init__(self, components: List[int]):
         self.components = components
@@ -51,8 +52,9 @@ if __name__ == "__main__":
     components = list(range(0, connections))
     qf = QuickFind(components=components)
     commands = generate_union_commands(connection_count=connections)
+    print(f'PROGRAM START')
     start = datetime.now()
     for command in commands:
         qf.union(p=command[0], q=command[1])
     end = datetime.now()
-    print(f'TIME ELAPSED: {end - start}')
+    print(f'PROGRAM END. TIME ELAPSED: {end - start}')
