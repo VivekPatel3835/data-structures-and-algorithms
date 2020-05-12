@@ -53,8 +53,9 @@ class QuickUnion:
 if __name__ == "__main__":
     connections = 10000
     components = list(range(0, connections))
-    qf = QuickUnion(components=components)
     commands = generate_union_commands(connection_count=connections)
+    print(f'PROGRAM START')
+    qf = QuickUnion(components=components)
     start = datetime.now()
     for command in commands:
         qf.union(p=command[0], q=command[1])
