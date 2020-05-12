@@ -17,16 +17,17 @@ class QuickUnion:
 
     def __init__(self, components: List[int]):
         self.components = components
-        self.component_connections = self._initialize_indexed_array(components=components)
+        self.component_connections = self._initialize_indexed_array()
+
+    _TIME_COMPLEXITY = "O(n)"
 
     # O(n)
-    @staticmethod
-    def _initialize_indexed_array(components: list) -> List:
-        return list(range(0, len(components)))
+    def _initialize_indexed_array(self) -> List:
+        return list(range(0, len(self.components)))
 
-    # O(1)
+    # O(n)
     def connected(self, p: int, q: int) -> bool:
-        return self.component_connections[p] == self.component_connections[q]
+        return self._get_root(i=p) == self._get_root(i=q)
 
     # O(n)
     def _get_root(self, i: int) -> int:
@@ -49,7 +50,7 @@ class QuickUnion:
 
 
 if __name__ == "__main__":
-    connections = 100
+    connections = 10000
     components = list(range(0, connections))
     qf = QuickUnion(components=components)
     commands = generate_union_commands(connection_count=connections)

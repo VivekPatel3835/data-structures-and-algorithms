@@ -17,20 +17,21 @@ class QuickFind:
     and only if id[p] is equal to id[q]. In other words, all sites in a component must have
     the same value in id[]. """
 
+    _TIME_COMPLEXITY = "O(n)"
+
     def __init__(self, components: List[int]):
         self.components = components
-        self.component_connections = self._initialize_indexed_array(components=components)
+        self.component_connections = self._initialize_indexed_array()
 
     # O(n)
-    @staticmethod
-    def _initialize_indexed_array(components: list) -> List:
-        return list(range(0, len(components)))
+    def _initialize_indexed_array(self) -> List:
+        return list(range(0, len(self.components)))
 
     # O(1)
     def connected(self, p: int, q: int) -> bool:
         return self.component_connections[p] == self.component_connections[q]
 
-    # O(n^2)
+    # O(n)
     def union(self, p: int, q: int) -> None:
         pid = self.component_connections[p]
         qid = self.component_connections[q]
@@ -46,7 +47,7 @@ class QuickFind:
 
 
 if __name__ == "__main__":
-    connections = 100
+    connections = 10000
     components = list(range(0, connections))
     qf = QuickFind(components=components)
     commands = generate_union_commands(connection_count=connections)
