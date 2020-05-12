@@ -11,8 +11,7 @@ class TestQuickFind(unittest.TestCase):
         expected_tree = [1, 1, 1, 8, 8, 1, 1, 1, 8, 8]
         for command in commands:
             qf.union(p=command[0], q=command[1])
-        self.assertEqual(expected_tree, qf.connections)
-
+        self.assertEqual(expected_tree, qf.component_connections)
 
 if __name__ == "__main__":
     unittest.main()

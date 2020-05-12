@@ -18,7 +18,8 @@ class QuickFind:
     the same value in id[]. """
 
     def __init__(self, components: List[int]):
-        self.connections = self._initialize_indexed_array(components=components)
+        self.components = components
+        self.component_connections = self._initialize_indexed_array(components=components)
 
     # O(n)
     @staticmethod
@@ -27,17 +28,17 @@ class QuickFind:
 
     # O(1)
     def connected(self, p: int, q: int) -> bool:
-        return self.connections[p] == self.connections[q]
+        return self.component_connections[p] == self.component_connections[q]
 
     # O(n^2)
     def union(self, p: int, q: int) -> None:
-        pid = self.connections[p]
-        qid = self.connections[q]
+        pid = self.component_connections[p]
+        qid = self.component_connections[q]
 
         if not self.connected(p=p, q=q):
-            for index, key in enumerate(self.connections):
-                if key == p or key == pid:
-                    self.connections[index] = qid
+            for component in self.components:
+                if self.component_connections[component] == pid:
+                    self.component_connections[component] = qid
             print(f'<<<<<<<<<<<<<<<<<<<<<<<<<<<<, union({p}, {q})')
             # print(self.connections)
         else:
@@ -45,7 +46,7 @@ class QuickFind:
 
 
 if __name__ == "__main__":
-    connections = 10000
+    connections = 100
     components = list(range(0, connections))
     qf = QuickFind(components=components)
     commands = generate_union_commands(connection_count=connections)
