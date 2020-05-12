@@ -11,7 +11,7 @@ class TestQuickUnion(unittest.TestCase):
         expected_tree = [1, 8, 1, 8, 3, 0, 5, 1, 8, 8]
         for command in commands:
             qf.union(p=command[0], q=command[1])
-        self.assertEqual(expected_tree, qf.connections)
+        self.assertEqual(expected_tree, qf.component_connections)
 
 
 if __name__ == "__main__":

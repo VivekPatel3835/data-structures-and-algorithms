@@ -17,7 +17,7 @@ class QuickUnion:
 
     def __init__(self, components: List[int]):
         self.components = components
-        self.connections = self._initialize_indexed_array(components=components)
+        self.component_connections = self._initialize_indexed_array(components=components)
 
     # O(n)
     @staticmethod
@@ -26,30 +26,30 @@ class QuickUnion:
 
     # O(1)
     def connected(self, p: int, q: int) -> bool:
-        return self.connections[p] == self.connections[q]
+        return self.component_connections[p] == self.component_connections[q]
 
     # O(n)
     def _get_root(self, i: int) -> int:
-        parent = self.connections[i]
+        parent = self.component_connections[i]
         current = i
         while current != parent:
-            current = self.connections[current]
-            parent = self.connections[current]
+            current = self.component_connections[parent]
+            parent = self.component_connections[current]
         return parent
 
     # O(1)
     def union(self, p: int, q: int) -> None:
         if not self.connected(p=p, q=q):
-            self.connections[self._get_root(i=p)] = self._get_root(i=q)
+            self.component_connections[self._get_root(i=p)] = self.component_connections[self._get_root(i=q)]
             print(f'<<<<<<<<<<<<<<<<<<<<<<<<<<<<, union({p}, {q})')
             # print(self.components)
-            # print(self.connections)
+            # print(self.component_connections)
         else:
             print(f'<<<<<<<<<<<<<<<<<<<<<<<<<<<<, {p} and {q} are connected.')
 
 
 if __name__ == "__main__":
-    connections = 10000
+    connections = 100
     components = list(range(0, connections))
     qf = QuickUnion(components=components)
     commands = generate_union_commands(connection_count=connections)
