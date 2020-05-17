@@ -3,6 +3,7 @@ This file holds utility functions that create the base data to be used with algo
 """
 from random import randint
 from typing import List
+from io import open
 
 
 def generate_union_commands(connection_count: int) -> List[List]:
@@ -22,3 +23,18 @@ def generate_union_commands(connection_count: int) -> List[List]:
             p = randint(0, connection_count - 1)
         commands.append([p, q])
     return commands
+
+
+def read_union_commands(file_path: str) -> int or [int, int]:
+    """
+    Reads union commands from a test data file. The first line in the file is the total number of commands. The
+    remainder of the file issues commands in the format P Q
+    """
+    file = open(file=file_path, mode='r', encoding='utf-8')
+    for index, line in enumerate(file):
+        if index == 0:
+            yield int(line.strip('\n'))
+        else:
+            values = line.strip('\n').split(" ")
+            yield [int(values[0]), int(values[1])]
+    yield None
