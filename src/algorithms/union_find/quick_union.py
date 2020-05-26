@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import List
-from utils import generate_union_commands, read_union_commands
+from src.utils import generate_union_commands, read_union_commands
+
 
 """
 Our goal is to write a program to filter out extraneous pairs from the sequence: 

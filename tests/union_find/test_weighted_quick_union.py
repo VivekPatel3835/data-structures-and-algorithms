@@ -1,5 +1,5 @@
 import unittest
-from algorithms.union_find.weighted_quick_union import WeightedQuickUnion
+from src.algorithms.union_find.weighted_quick_union import WeightedQuickUnion
 
 
 class TestWeightedQuickUnion(unittest.TestCase):

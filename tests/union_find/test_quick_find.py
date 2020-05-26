@@ -1,5 +1,5 @@
 import unittest
-from algorithms.dynamic_connectivity.quick_find import QuickFind
+from src.algorithms.dynamic_connectivity.quick_find import QuickFind
 
 
 class TestQuickFind(unittest.TestCase):
