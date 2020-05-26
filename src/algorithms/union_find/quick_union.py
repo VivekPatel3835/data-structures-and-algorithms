@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import List
 from src.utils import generate_union_commands, read_union_commands
 
+
 """
 Our goal is to write a program to filter out extraneous pairs from the sequence: 
 When the program reads a pair p q from the input, it should write the pair to the output only 
