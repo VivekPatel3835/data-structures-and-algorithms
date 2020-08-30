@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from typing import List, Tuple
-from src.utils import generate_union_commands, read_union_commands
+from src.utils import generate_union_commands, read_union_commands, run_dynamic_conectivity_program
 
 
 """
@@ -76,19 +76,6 @@ class WeightedQuickUnion:
         else:
             print(f'<<<<<<<<<<<<<<<<<<<<<<<<<<<<, {p} and {q} are connected.')
 
-
 if __name__ == "__main__":
-    commands = read_union_commands(
-        file_path=f'{os.path.abspath("tests")}/test_data/large_union_find.txt')
-    connections = next(commands)
-    components = list(range(0, connections))
-    print(f'PROGRAM START')
-    qf = WeightedQuickUnion(components=components)
-    start = datetime.now()
-    command = next(commands)
-    while command:
-        qf.union(p=command[0], q=command[1])
-        command = next(commands)
-    end = datetime.now()
-    print(
-        f'PROGRAM END. TIME ELAPSED: {end - start}. Component count: {qf.component_count}')
+    run_dynamic_conectivity_program(
+        algorithmClass=WeightedQuickUnion, test_data_path=f'{os.path.abspath("test")}/test_data/large_union_find.txt')

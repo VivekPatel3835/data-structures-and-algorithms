@@ -1,5 +1,5 @@
 import unittest
-from src.algorithms.dynamic_connectivity.union_find.quick_union import QuickUnion
+from src.algorithms.dynamic_connectivity.quick_union import QuickUnion
 
 
 class TestQuickUnion(unittest.TestCase):

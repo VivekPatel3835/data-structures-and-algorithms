@@ -2,7 +2,8 @@
 This file holds utility functions that create the base data to be used with algorithms
 """
 from random import randint
-from typing import List
+from typing import List, ClassVar
+from datetime import datetime
 from io import open
 
 
@@ -38,3 +39,19 @@ def read_union_commands(file_path: str) -> int or [int, int]:
             values = line.strip('\n').split(" ")
             yield [int(values[0]), int(values[1])]
     yield None
+
+
+def run_dynamic_conectivity_program(algorithmClass: ClassVar, test_data_path: str):
+    commands = read_union_commands(file_path=test_data_path)
+    connections = next(commands)
+    components = list(range(0, connections))
+    print(f'PROGRAM START')
+    qf = algorithmClass(components=components)
+    start = datetime.now()
+    command = next(commands)
+    while command:
+        qf.union(p=command[0], q=command[1])
+        command = next(commands)
+    end = datetime.now()
+    print(
+        f'PROGRAM END. TIME ELAPSED: {end - start}. Component count: {qf.component_count}')

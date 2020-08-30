@@ -1,5 +1,5 @@
 import unittest
-from src.algorithms.dynamic_connectivity.union_find.weighted_quick_union import WeightedQuickUnion
+from src.algorithms.dynamic_connectivity.weighted_quick_union import WeightedQuickUnion
 
 
 class TestWeightedQuickUnion(unittest.TestCase):
